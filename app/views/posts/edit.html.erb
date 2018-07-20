@@ -1,29 +1,6 @@
 
 <h2>Edit Post</h2>
 
-
-<% if @post.errors.any? %>
-  <ul>
-    <% @post.errors.full_messages.each do |msg| %>
-      <li> <%= msg %> </li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%= form_for @post do |f| %>
-
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-
-
-  <%= f.label :body %>
-  <%= f.text_area :body %>
-
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
+<%= render 'form' %>
 
 <%= link_to "Back to Posts", posts_path %>

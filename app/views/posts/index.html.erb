@@ -1,4 +1,7 @@
 <h2>Lastest Posts </h2>
+<p>
+  <%= link_to "Create New", new_post_path  %>
+</p>
 
 <table>
   <tr>
@@ -11,6 +14,7 @@
     <td> <%= post.body %></td>
     <td> <%= link_to "Edit", edit_post_path(post)  %></td>
     <td> <%= link_to "Show", post_path(post)  %></td>
+    <td> <%= link_to "Delete", post_path(post), method: :delete, data: {confirm:"Are You Sure?"}  %></td>
   </tr>
     <% end %>
 </table>
