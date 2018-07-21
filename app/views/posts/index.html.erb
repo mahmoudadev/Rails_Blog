@@ -1,20 +1,22 @@
-<h2>Lastest Posts </h2>
-<p>
-  <%= link_to "Create New", new_post_path  %>
-</p>
+<h2 align="center">Lastest Posts </h2>
+<div class="text-center">
+  <%= link_to "Create New", new_post_path, class: "btn-primary btn btn-sm"  %>
+</div>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-  </tr>
+<div class="posts mt-5"></div>
   <% @posts.each do |post| %>
-  <tr>
-    <td> <%= post.title %></td>
-    <td> <%= post.body %></td>
-    <td> <%= link_to "Edit", edit_post_path(post)  %></td>
-    <td> <%= link_to "Show", post_path(post)  %></td>
-    <td> <%= link_to "Delete", post_path(post), method: :delete, data: {confirm:"Are You Sure?"}  %></td>
-  </tr>
-    <% end %>
-</table>
+  <div class="post jumbotron">
+    <div class="post-title">
+      <a href="<%= post_path(post) %>"><h2><%= post.title %></h2></a>
+    </div>
+    <div>
+      <p> <%=  truncate(post.body, length: 100) %> </p>
+    </div>
+    <div class="post-actions">
+      <%= link_to "Edit", edit_post_path(post), class: "btn btn-success btn-sm" %>
+      <%= link_to "delete", post_path(post), method: :delete, data: {confirm: "Are you really want to delete this post?"},
+                  class: "btn btn-danger btn-sm" %>
+    </div>
+    </div>
+
+<% end %>
