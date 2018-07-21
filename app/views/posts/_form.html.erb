@@ -1,8 +1,8 @@
-<div class="container">
+
 <div class="errors" style="padding: 50px">
 <%= render 'shared/errors', object: @post %>
 </div>
-  <div class="offset-2">
+  <div class="offset-md-2">
 <%= form_for @post do |f| %>
   <div class="form-group row">
   <%= f.label :title, class:'col-form-label col-1'%>
@@ -24,5 +24,4 @@
     </div>
     </div>
 <% end %>
-</div>
 </div>
