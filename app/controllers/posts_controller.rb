@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     #render plain: params[:post].pretty_inspect
     @post = Post.new(post_params)
     if @post.save
-      flash[:notice] = "Your post has been created"
+      flash[:success] = "Your post has been created"
       redirect_to post_path(@post)
     else
       render 'new'
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:notice] = "Post is getting updated"
+      flash[:success] = "Post is getting updated"
       redirect_to post_path(@post)
     else
       render 'edit'
@@ -38,6 +38,7 @@ class PostsController < ApplicationController
   end
 
  def destroy
+   flash[:danger] = "Post has been deleted"
    @post.destroy
    redirect_to posts_path
  end

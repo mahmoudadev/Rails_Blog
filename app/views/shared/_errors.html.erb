@@ -1,0 +1,12 @@
+<% if object.errors.any? %>
+  <div class="offset-2 col-sm-8 alert alert-danger" role="alert">
+    <h4 class="alert-heading"> <%= pluralize(object.errors.count, "error") %>
+      Prevented Post form Being Published:
+    </h4>
+    <ul>
+      <% object.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
