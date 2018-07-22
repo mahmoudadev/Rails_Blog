@@ -9,6 +9,11 @@
   <div class="post jumbotron">
     <div class="post-title">
       <a href="<%= post_path(post) %>"><h2><%= post.title %></h2></a>
+      <div class="post-meta-data">
+        <small><%= time_ago_in_words(post.created_at)%> ago, by
+        <%=  post.user.username.upcase_first  if post.user %>
+        </small>
+      </div>
     </div>
     <div>
       <p> <%=  truncate(post.body, length: 100) %> </p>

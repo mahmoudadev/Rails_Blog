@@ -17,6 +17,7 @@ class PostsController < ApplicationController
   def create
     #render plain: params[:post].pretty_inspect
     @post = Post.new(post_params)
+    @post.user = User.first
     if @post.save
       flash[:success] = "Your post has been created"
       redirect_to post_path(@post)
