@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="heading">
+    <h1 align="center">My Profile</h1>
+  </div>
+  <div class="row">
+    <div class="col-12" align="center">
+      <%= gravatar_for @user, 250 %>
+      <h3> <%= @user.username.upcase %></h3>
+      <h3> <%= @user.email.downcase %></h3>
+    </div>
+  </div>
+  <hr>
+  <div class="mt-3">
+
+    <strong><%= @user.username.upcase %>'s Posts </strong>
+    <% if @user.posts.count > 0   %>
+      <%= render 'posts/post', object: @user.posts %>
+    <% else %>
+      <p class=" text-center alert alert-secondary">You don't have any posts yet</p>
+    <% end %>
+  </div>
+
+</div>

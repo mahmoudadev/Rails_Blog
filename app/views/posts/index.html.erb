@@ -4,26 +4,9 @@
   <%= link_to "Create New", new_post_path, class: "btn-primary btn btn-sm"  %>
 </div>
 
-<div class="posts mt-5"></div>
-  <% @posts.each do |post| %>
-  <div class="post jumbotron">
-    <div class="post-title">
-      <a href="<%= post_path(post) %>"><h2><%= post.title %></h2></a>
-      <div class="post-meta-data">
-        <small><%= time_ago_in_words(post.created_at)%> ago, by
-        <%=  post.user.username.upcase_first  if post.user %>
-        </small>
-      </div>
-    </div>
-    <div>
-      <p> <%=  truncate(post.body, length: 100) %> </p>
-    </div>
-    <div class="post-actions">
-      <%= link_to "Edit", edit_post_path(post), class: "btn btn-success btn-sm" %>
-      <%= link_to "delete", post_path(post), method: :delete, data: {confirm: "Are you really want to delete this post?"},
-                  class: "btn btn-danger btn-sm" %>
-    </div>
-    </div>
+<div class="mt-5"></div>
+<%= render 'post', object: @posts %>
 
-<% end %>
+
+
 </div>
