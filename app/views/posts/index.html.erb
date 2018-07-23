@@ -5,8 +5,12 @@
 </div>
 
 <div class="mt-5"></div>
+
+
 <%= render 'post', object: @posts %>
 
-
+  <div class="col-12" align="center">
+    <%= will_paginate(@posts, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class:  "pagination-sm") %>
+  </div>
 
 </div>
