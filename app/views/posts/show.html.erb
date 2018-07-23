@@ -3,12 +3,14 @@
   <div class="col-lg-8 col-sm-12" style="margin: 0 auto">
 <h2 class="jumbotron">
 <%= @post.title %>
+  <% if logged_in? && @post.user == current_user %>
   <div class="post-actions">
     <%= link_to "Edit", edit_post_path(@post), class: "btn btn-success btn-sm" %>
     <%= link_to "delete", post_path(@post), method: :delete, data: {confirm: "Are you really want to delete this post?"},
                 class: "btn btn-danger btn-sm" %>
     <%= link_to "Back to Posts", posts_path, class: "btn btn-secondary btn-sm" %>
   </div>
+    <% end %>
 </h2>
 
 <div class="post-body" align="left">

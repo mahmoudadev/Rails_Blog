@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :show, :destroy, :update]
-
+  before_action :require_user , except: [:index, :show]
+  before_action :require_same_user , except: [:index, :show, :new, :create, :update]
 
 
  def index
@@ -17,7 +18,7 @@ class PostsController < ApplicationController
   def create
     #render plain: params[:post].pretty_inspect
     @post = Post.new(post_params)
-    @post.user = User.first
+    @post.user = current_user
     if @post.save
       flash[:success] = "Your post has been created"
       redirect_to post_path(@post)
@@ -50,6 +51,12 @@ class PostsController < ApplicationController
  end
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+  def require_same_user
+    if current_user != @post.user
+      flash[:warning] = "You don't have access to this page"
+      redirect_to root_path
+    end
   end
 
 
