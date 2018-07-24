@@ -14,4 +14,16 @@ class CategoryFlowsTest < ActionDispatch::IntegrationTest
     assert_match 'News', response.body
   end
 
+  test 'invalid category submission results and failure' do
+    get new_category_path
+    assert_template 'categories/new'
+    assert_no_difference 'Category.count' do
+      post categories_path , params: {category: {name: ' '}}
+    end
+    assert_template 'categories/new'
+    assert_select "div.alert-danger"
+  end
+
+
+
 end
