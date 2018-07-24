@@ -53,7 +53,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body)
   end
   def require_same_user
-    if current_user != @post.user
+    if current_user != @post.user and !current_user.admin?
       flash[:warning] = "You don't have access to this page"
       redirect_to root_path
     end
