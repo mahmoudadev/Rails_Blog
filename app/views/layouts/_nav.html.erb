@@ -9,9 +9,6 @@
       <li class="nav-item">
         <%= link_to "Posts", posts_path, class: "nav-link" %>
       </li>
-      <li class="nav-item">
-        <%= link_to "Catesgories", categories_path, class: "nav-link" %>
-      </li>
       <% if logged_in? %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -24,6 +21,24 @@
         </div>
       </li>
         <% end %>
+
+      <% if logged_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categories
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            <%= link_to "All Categories", categories_path, class: "dropdown-item" %>
+            <% Category.all.each do |category| %>
+            <%= link_to category.name , category_path(category), class: "dropdown-item" %>
+            <%end %>
+            <div class="dropdown-divider"></div>
+            <%= link_to "create new category", new_category_path, class: "dropdown-item" %>
+
+          </div>
+        </li>
+      <% end %>
 
     </ul>
     <form class="form-inline my-2 my-lg-0">
