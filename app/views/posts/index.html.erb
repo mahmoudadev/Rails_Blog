@@ -1,16 +1,13 @@
 <h2 align="center">Lastest Posts </h2>
 <div class="container">
-<div class="text-center">
-  <%= link_to "Create New", new_post_path, class: "btn-primary btn btn-sm"  %>
-</div>
 
 <div class="mt-5"></div>
 
 
 <%= render 'post', object: @posts %>
 
-  <div class="col-sm-12" align="center">
-    <%= will_paginate(@posts, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class:  "pagination-sm") %>
+  <div class="col-sm-12" >
+    <%= will_paginate(@posts, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class:  "pagination-sm offset-4") %>
   </div>
 
 </div>

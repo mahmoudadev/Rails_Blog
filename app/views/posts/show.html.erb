@@ -16,6 +16,14 @@
 <div class="post-body" align="left">
   <%= @post.body %>
 </div>
+    <hr>
+    <% if @post.categories.any? %>
+      <div class="post-cats" align="left">
+        Related to:  <%= render @post.categories %>
+      </div>
+
+
+  <% end %>
 
   </div>
 </div>
